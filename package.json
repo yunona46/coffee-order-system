@@ -1,62 +1,33 @@
 {
-  "name": "coffee-shop-system",
-  "version": "0.1.0",
-  "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd backend && npm run dev",
-    "client": "cd frontend && npm start",
-    "lint": "eslint . --ext .js,.jsx",
-    "format": "prettier --write .",
-    "test": "jest",
-    "start": "node server.js"
-  },
-  "devDependencies": {
-    "concurrently": "^7.6.0",
-    "eslint": "^8.0.0",
-    "prettier": "^2.8.0"
-  },
-  "description": "",
-  "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yunona46/coffee-order-system.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yunona46/coffee-order-system/issues"
-  },
-  "homepage": "https://github.com/yunona46/coffee-order-system#readme"
-}
-{
   "name": "coffee-order-system",
-  "version": "0.1.0",
-  "description": "Coffee ordering system with React frontend and Node.js backend",
-  "main": "index.js",
+  "version": "1.0.0",
+  "description": "Coffee Order System API",
+  "main": "src/server.js",
+  "type": "commonjs",
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd backend && npm run dev",
-    "client": "cd frontend && npm start",
-    "install-server": "cd backend && npm install",
-    "install-client": "cd frontend && npm install",
-    "install-all": "npm run install-server && npm run install-client",
-    "build": "cd frontend && npm run build",
-    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "lint:fix": "eslint . --ext .js,.jsx --ignore-path .gitignore --fix",
-    "format": "prettier --write . --ignore-path .gitignore",
-    "test": "echo \"Tests will be added later\" && exit 0"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yunona46/coffee-order-system.git"
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.11.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.0",
+    "validator": "^13.15.15"
   },
-  "keywords": ["coffee", "order-system", "react", "nodejs", "express"],
-  "author": "Yunona",
-  "license": "MIT",
   "devDependencies": {
-    "concurrently": "^7.6.0",
-    "eslint": "^8.0.0",
-    "prettier": "^2.8.0"
-  }
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "coffee",
+    "order",
+    "api",
+    "rest"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
 }

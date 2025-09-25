@@ -1,0 +1,19 @@
+﻿:root {
+  --primary-color: #8B4513;
+  --primary-light: #D4A574;
+  --primary-dark: #654321;
+  --accent-color: #FF6B35;
+  --background-light: #FFF8F0;
+  --background-white: #FFFFFF;
+  --text-primary: #2D1B14;
+  --text-secondary: #6B4423;
+  --text-light: #8B7355;
+  --border-color: #E6D7C3;
+  --success-color: #10B981;
+  --warning-color: #F59E0B;
+  --error-color: #EF4444;
+  --shadow: 0 4px 20px rgba(139, 69, 19, 0.1);
+  --shadow-hover: 0 8px 30px rgba(139, 69, 19, 0.15);
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
