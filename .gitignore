@@ -232,4 +232,38 @@ Thumbs.db
 
 # Temporary files
 .tmp/
-.temp/
+.temp/# Дублікати package-lock
+package-lock-*.json
+
+# Індивідуальні налаштування
+*.local.*
+
+# Backup файли
+*-backup.*
+backup-*
+
+# Windows temporary files
+Thumbs.db
+ehthumbs.db
+
+# PowerShell
+*.ps1xml
+
+# VS Code
+.vscode/settings.json
+.vscode/launch.json
+
+# Зайві папки, які можуть з'являтися
+src/           # Якщо це стара структура
+config/        # Стара папка конфігурації
+middleware/    # Стара папка
+models/        # Стара папка
+routes/        # Стара папка
+
+# Дублікати
+backend/src/
+frontend/src/src/
+
+# Типові помилки
+*.tmp
+*.temp
