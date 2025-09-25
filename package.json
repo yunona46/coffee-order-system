@@ -2,7 +2,7 @@
   \"name\": \"coffee-order-system\",
   \"version\": \"1.0.0\",
   \"description\": \"Coffee ordering system with React frontend and Node.js backend\",
-  \"main\": \"index.js\",
+  \"type\": \"commonjs\",
   \"scripts\": {
     \"dev\": \"concurrently \\\"npm run server\\\" \\\"npm run client\\\"\",
     \"server\": \"cd backend && npm run dev\",
@@ -24,9 +24,5 @@
   \"devDependencies\": {
     \"concurrently\": \"^8.0.0\",
     \"rimraf\": \"^5.0.0\"
-  },
-  \"workspaces\": [
-    \"backend\", 
-    \"frontend\"
-  ]
+  }
 }
