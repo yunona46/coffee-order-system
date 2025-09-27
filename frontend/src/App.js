@@ -5,9 +5,9 @@ import './App.css';
 const mockProducts = [
   { id: 1, name: 'Капучино', price: 65, category: 'coffee', emoji: '☕', description: 'Ароматна кава з молочною піною' },
   { id: 2, name: 'Лате', price: 70, category: 'coffee', emoji: '🥛', description: 'Ніжна кава з молоком' },
-  { id: 3, name: 'Еспресо', price: 50, category: 'coffee', emoji: '☕', description: 'Класичний міцний еспресо' },
+  { id: 3, name: 'Еспресо', price: 50, category: 'coffee', emoji: '⚫', description: 'Класичний міцний еспресо' },
   { id: 4, name: 'Чай зелений', price: 45, category: 'tea', emoji: '🍵', description: 'Освіжаючий зелений чай' },
-  { id: 5, name: 'Тірамісу', price: 85, category: 'dessert', emoji: '🍰', description: 'Класичний італійський десерт' }
+  { id: 5, name: 'Тірамісу', price: 85, category: 'dessert', emoji: '🍰', description: 'Класичний італійський десерт' }, 
   { id: 6, name: 'Американо', price: 55, category: 'coffee', emoji: '☕', description: 'Класичний американо' },
   { id: 7, name: 'Мокачіно', price: 75, category: 'coffee', emoji: '🍫', description: 'Кава з шоколадом' },
   { id: 8, name: 'Флет-Уайт', price: 70, category: 'coffee', emoji: '🥛', description: 'Ніжний флет-уайт' },
@@ -20,7 +20,7 @@ const mockProducts = [
 function App() {
   const [currentView, setCurrentView] = useState('menu');
   const [cart, setCart] = useState([]);
-  const [user, setUser] = useState(null);
+  const [user, _setUser] = useState(null); 
 
   const addToCart = (product) => {
     setCart(prevCart => {
