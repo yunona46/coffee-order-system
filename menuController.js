@@ -1,5 +1,5 @@
-﻿const menuService = require('../services/menuService');
-const { asyncHandler } = require('../utils/helpers');
+﻿import menuService from "../services/menuService.js";
+import { asyncHandler } from "../utils/helpers.js";
 
 class MenuController {
   getAllItems = asyncHandler(async (req, res) => {
@@ -48,23 +48,13 @@ class MenuController {
     });
   });
 
-  searchItems = asyncHandler(async (req, res) => {
-    const { q: searchTerm } = req.query;
-    const items = await menuService.searchMenuItems(searchTerm);
-
-    res.json({
-      success: true,
-      data: { items }
-    });
-  });
-
   // Адміністративні методи
   createItem = asyncHandler(async (req, res) => {
     const item = await menuService.createMenuItem(req.body);
 
     res.status(201).json({
       success: true,
-      message: 'Позицію меню створено',
+      message: "Позицію меню створено",
       data: { item }
     });
   });
@@ -74,7 +64,7 @@ class MenuController {
 
     res.json({
       success: true,
-      message: 'Позицію меню оновлено',
+      message: "Позицію меню оновлено",
       data: { item }
     });
   });
@@ -89,4 +79,6 @@ class MenuController {
   });
 }
 
-module.exports = new MenuController();
+// Створюємо екземпляр контролера та експортуємо його методи
+const menuController = new MenuController();
+export default menuController;

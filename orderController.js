@@ -1,27 +1,14 @@
-﻿const orderService = require('../services/orderService');
-const { validationResult } = require('express-validator');
-const { asyncHandler } = require('../utils/helpers');
+﻿import orderService from "../services/orderService.js";
+import { asyncHandler } from "../utils/helpers.js";
 
 class OrderController {
   createOrder = asyncHandler(async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({
-        success: false,
-        message: 'Помилка валідації',
-        errors: errors.array().map(error => ({
-          field: error.path,
-          message: error.msg
-        }))
-      });
-    }
-
     const userId = req.user.id;
     const order = await orderService.createOrder(userId, req.body);
 
     res.status(201).json({
       success: true,
-      message: 'Замовлення успішно створено',
+      message: "Замовлення успішно створено",
       data: { order }
     });
   });
@@ -57,7 +44,7 @@ class OrderController {
 
     res.json({
       success: true,
-      message: 'Замовлення скасовано',
+      message: "Замовлення скасовано",
       data: { order }
     });
   });
@@ -72,14 +59,17 @@ class OrderController {
     const skip = (page - 1) * limit;
 
     const [orders, totalOrders] = await Promise.all([
-      require('../models/Order')
-        .find(query)
-        .populate('user', 'firstName lastName email phone')
-        .populate('items.menuItem', 'name')
-        .sort({ createdAt: -1 })
-        .skip(skip)
-        .limit(parseInt(limit)),
-      require('../models/Order').countDocuments(query)
+      import("../models/Order.js").then(module => 
+        module.default.find(query)
+          .populate("user", "firstName lastName email phone")
+          .populate("items.menuItem", "name")
+          .sort({ createdAt: -1 })
+          .skip(skip)
+          .limit(parseInt(limit))
+      ),
+      import("../models/Order.js").then(module => 
+        module.default.countDocuments(query)
+      )
     ]);
 
     res.json({
@@ -104,7 +94,7 @@ class OrderController {
 
     res.json({
       success: true,
-      message: 'Статус замовлення оновлено',
+      message: "Статус замовлення оновлено",
       data: { order }
     });
   });
@@ -119,4 +109,5 @@ class OrderController {
   });
 }
 
-module.exports = new OrderController();
+const orderController = new OrderController();
+export default orderController;

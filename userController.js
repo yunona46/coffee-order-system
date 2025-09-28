@@ -1,6 +1,5 @@
-﻿const User = require('../models/User');
-const { validationResult } = require('express-validator');
-const { asyncHandler, AppError } = require('../utils/helpers');
+﻿import User from "../models/User.js";
+import { asyncHandler } from "../utils/helpers.js";
 
 class UserController {
   getProfile = asyncHandler(async (req, res) => {
@@ -13,19 +12,7 @@ class UserController {
   });
 
   updateProfile = asyncHandler(async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({
-        success: false,
-        message: 'Помилка валідації',
-        errors: errors.array().map(error => ({
-          field: error.path,
-          message: error.msg
-        }))
-      });
-    }
-
-    const allowedUpdates = ['firstName', 'lastName', 'phone', 'preferences'];
+    const allowedUpdates = ["firstName", "lastName", "phone", "preferences"];
     const updates = {};
     
     Object.keys(req.body).forEach(key => {
@@ -42,13 +29,13 @@ class UserController {
 
     res.json({
       success: true,
-      message: 'Профіль успішно оновлено',
+      message: "Профіль успішно оновлено",
       data: { user }
     });
   });
 
   getAddresses = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.user.id).select('addresses');
+    const user = await User.findById(req.user.id).select("addresses");
 
     res.json({
       success: true,
@@ -57,23 +44,9 @@ class UserController {
   });
 
   addAddress = asyncHandler(async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({
-        success: false,
-        message: 'Помилка валідації',
-        errors: errors.array().map(error => ({
-          field: error.path,
-          message: error.msg
-        }))
-      });
-    }
-
     const user = await User.findById(req.user.id);
     
-    // Якщо це перша адреса або встановлена як за замовчуванням
     if (user.addresses.length === 0 || req.body.isDefault) {
-      // Зняти мітку за замовчуванням з інших адрес
       user.addresses.forEach(addr => addr.isDefault = false);
     }
 
@@ -88,7 +61,7 @@ class UserController {
 
     res.status(201).json({
       success: true,
-      message: 'Адресу додано',
+      message: "Адресу додано",
       data: { address: newAddress }
     });
   });
@@ -99,10 +72,12 @@ class UserController {
     
     const address = user.addresses.id(addressId);
     if (!address) {
-      throw new AppError('Адресу не знайдено', 404);
+      return res.status(404).json({
+        success: false,
+        message: "Адресу не знайдено"
+      });
     }
 
-    // Якщо встановлюємо як за замовчуванням
     if (req.body.isDefault) {
       user.addresses.forEach(addr => addr.isDefault = false);
     }
@@ -115,7 +90,7 @@ class UserController {
 
     res.json({
       success: true,
-      message: 'Адресу оновлено',
+      message: "Адресу оновлено",
       data: { address }
     });
   });
@@ -126,13 +101,15 @@ class UserController {
     
     const address = user.addresses.id(addressId);
     if (!address) {
-      throw new AppError('Адресу не знайдено', 404);
+      return res.status(404).json({
+        success: false,
+        message: "Адресу не знайдено"
+      });
     }
 
     const wasDefault = address.isDefault;
     address.remove();
 
-    // Якщо видалили адресу за замовчуванням, встановити першу наявну
     if (wasDefault && user.addresses.length > 0) {
       user.addresses[0].isDefault = true;
     }
@@ -141,7 +118,7 @@ class UserController {
 
     res.json({
       success: true,
-      message: 'Адресу видалено'
+      message: "Адресу видалено"
     });
   });
 
@@ -149,8 +126,8 @@ class UserController {
     const userId = req.user.id;
     
     const user = await User.findById(userId)
-      .select('statistics')
-      .populate('statistics.favoriteItems.menuItemId', 'name images');
+      .select("statistics")
+      .populate("statistics.favoriteItems.menuItemId", "name images");
 
     res.json({
       success: true,
@@ -159,4 +136,5 @@ class UserController {
   });
 }
 
-module.exports = new UserController();
+const userController = new UserController();
+export default userController;

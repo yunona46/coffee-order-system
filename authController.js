@@ -1,59 +1,32 @@
-﻿const authService = require('../services/authService');
-const { validationResult } = require('express-validator');
-const { asyncHandler, AppError } = require('../utils/helpers');
+﻿import authService from "../services/authService.js";
+import { asyncHandler } from "../utils/helpers.js";
 
 class AuthController {
   register = asyncHandler(async (req, res) => {
-    // Перевіряємо валідацію
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({
-        success: false,
-        message: 'Помилка валідації',
-        errors: errors.array().map(error => ({
-          field: error.path,
-          message: error.msg
-        }))
-      });
-    }
-
     const result = await authService.registerUser(req.body);
 
     res.status(201).json({
       success: true,
-      message: 'Користувач успішно зареєстрований',
+      message: "Користувач успішно зареєстрований",
       data: result
     });
   });
 
   login = asyncHandler(async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({
-        success: false,
-        message: 'Помилка валідації',
-        errors: errors.array().map(error => ({
-          field: error.path,
-          message: error.msg
-        }))
-      });
-    }
-
     const { email, password } = req.body;
     const result = await authService.loginUser(email, password);
 
     res.json({
       success: true,
-      message: 'Успішна авторизація',
+      message: "Успішна авторизація",
       data: result
     });
   });
 
   logout = asyncHandler(async (req, res) => {
-    // В реальному додатку тут би був blacklist токенів
     res.json({
       success: true,
-      message: 'Успішний вихід з системи'
+      message: "Успішний вихід з системи"
     });
   });
 
@@ -89,4 +62,5 @@ class AuthController {
   });
 }
 
-module.exports = new AuthController();
+const authController = new AuthController();
+export default authController;
