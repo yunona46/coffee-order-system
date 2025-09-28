@@ -1,0 +1,188 @@
+{
+  "users": [
+    {
+      "firstName": "?????",
+      "lastName": "????????",
+      "email": "test.encoding@example.com",
+      "password": "password123",
+      "phone": "+380501234567",
+      "role": "customer",
+      "id": "1",
+      "createdAt": "2025-09-26T00:30:10.974Z"
+    },
+    {
+      "firstName": "?????",
+      "lastName": "????????",
+      "email": "test.encoding2@example.com",
+      "password": "password123",
+      "phone": "+380501234567",
+      "role": "customer",
+      "id": "1",
+      "createdAt": "2025-09-26T00:32:42.840Z"
+    },
+    {
+      "firstName": "Олег",
+      "lastName": "Коваленко",
+      "email": "oleg.kovalenko@example.com",
+      "password": "password123",
+      "phone": "+380501234567",
+      "role": "customer",
+      "id": "1",
+      "createdAt": "2025-09-26T00:34:35.200Z"
+    },
+    {
+      "firstName": "Катерина",
+      "lastName": "Мельник",
+      "email": "kateryna.melnyk@example.com",
+      "password": "password123",
+      "phone": "+380501234567",
+      "role": "customer",
+      "id": "1",
+      "createdAt": "2025-09-26T00:48:10.527Z"
+    },
+    {
+      "firstName": "??????",
+      "lastName": "????????",
+      "email": "andriy.hrytsenko@example.com",
+      "password": "$2b$12$aL1rwssWOrqmBQnFY5HgOOBH4yzv2h7zXxdfH/sS/H20WDfqSfMNa",
+      "phone": "+380501234567",
+      "role": "customer",
+      "id": "1",
+      "createdAt": "2025-09-26T00:51:30.949Z"
+    },
+    {
+      "firstName": "?????",
+      "lastName": "???????",
+      "email": "admin@coffee.com",
+      "password": "$2b$12$Dswodv1vYChRnsWIj8zyzuOvDuLzTxbQl2B4mrWrFx9wlSDvRYYNq",
+      "phone": null,
+      "role": "customer",
+      "id": "1",
+      "createdAt": "2025-09-26T07:55:41.745Z"
+    },
+    {
+      "firstName": "????",
+      "lastName": "??????????",
+      "email": "test@example.com",
+      "password": "$2b$12$NLcn9dOKS3HYVG5FIYckZ.OsgvDxBogYpgcHMEC3idR7lGDVFe6Y6",
+      "phone": "+380501234567",
+      "role": "customer",
+      "id": "1",
+      "createdAt": "2025-09-26T10:18:40.529Z"
+    },
+    {
+      "id": "user_1758883456324",
+      "firstName": "????",
+      "lastName": "??????????",
+      "email": "test134415@example.com",
+      "password": "$2b$12$2GVAUFkTjAPZgv60RFQ2EukURFUubRcMjIHjKSvvPiXd1zmQ7PW6u",
+      "phone": "+380501234567",
+      "role": "customer",
+      "createdAt": "2025-09-26T10:44:16.334Z",
+      "updatedAt": "2025-09-26T10:44:16.334Z"
+    },
+    {
+      "id": "user_1758883545515",
+      "firstName": "????",
+      "lastName": "??????????",
+      "email": "test134545@example.com",
+      "password": "$2b$12$P6YG/xvbjYyg2W6cMd8gf.8YYuADSLlqCwjiggWnN0G/aUIzF..16",
+      "phone": "+380501234567",
+      "role": "customer",
+      "createdAt": "2025-09-26T10:45:45.515Z",
+      "updatedAt": "2025-09-26T10:45:45.515Z"
+    }
+  ],
+  "menuItems": [
+    {
+      "name": "Еспресо",
+      "description": "Класичний міцний кавовий напій",
+      "category": "espresso",
+      "price": 35,
+      "ingredients": [
+        "кавові зерна"
+      ],
+      "calories": 5,
+      "preparationTime": 2,
+      "available": true,
+      "id": "1",
+      "createdAt": "2025-09-26T00:29:39.282Z",
+      "updatedAt": "2025-09-26T00:29:39.283Z"
+    },
+    {
+      "name": "Американо",
+      "description": "Еспресо з гарячою водою",
+      "category": "americano",
+      "price": 40,
+      "ingredients": [
+        "кавові зерна",
+        "вода"
+      ],
+      "calories": 10,
+      "preparationTime": 3,
+      "available": true,
+      "id": "1",
+      "createdAt": "2025-09-26T00:29:39.284Z",
+      "updatedAt": "2025-09-26T00:29:39.284Z"
+    },
+    {
+      "name": "Капучиino",
+      "description": "Еспресо з молочною пінкою",
+      "category": "cappuccino",
+      "price": 45,
+      "ingredients": [
+        "кавові зерна",
+        "молоко",
+        "молочна пінка"
+      ],
+      "allergens": [
+        "молоко"
+      ],
+      "calories": 120,
+      "preparationTime": 4,
+      "available": true,
+      "id": "1",
+      "createdAt": "2025-09-26T00:29:39.287Z",
+      "updatedAt": "2025-09-26T00:29:39.287Z"
+    },
+    {
+      "name": "Латте",
+      "description": "Ніжний напій з еспресо та молоком",
+      "category": "latte",
+      "price": 50,
+      "ingredients": [
+        "кавові зерна",
+        "молоко"
+      ],
+      "allergens": [
+        "молоко"
+      ],
+      "calories": 150,
+      "preparationTime": 4,
+      "available": true,
+      "id": "1",
+      "createdAt": "2025-09-26T00:29:39.289Z",
+      "updatedAt": "2025-09-26T00:29:39.289Z"
+    },
+    {
+      "preparationTime": 5,
+      "category": "cappuccino",
+      "price": 55,
+      "description": "??????? ? ????????? ? ???????",
+      "name": "????????",
+      "available": true,
+      "ingredients": [
+        "?????? ?????",
+        "??????",
+        "???????"
+      ],
+      "calories": 180,
+      "id": "1",
+      "createdAt": "2025-09-26T07:55:42.939Z",
+      "updatedAt": "2025-09-26T07:55:42.939Z"
+    }
+  ],
+  "carts": [],
+  "orders": [],
+  "nextId": 1
+}
