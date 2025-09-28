@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# Dependencies
 node_modules/
 frontend/node_modules/
@@ -71,3 +72,10 @@ Thumbs.db
 # Temporary files
 tmp/
 temp/
+=======
+﻿node_modules/
+.env
+.DS_Store
+dist/
+build/
+>>>>>>> 6f6d0e7ae3e157b26d1a5d2a1d76d3e05409956d
