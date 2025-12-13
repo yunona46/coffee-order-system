@@ -42,19 +42,42 @@ const userSchema = new mongoose.Schema({
   isActive: {
     type: Boolean,
     default: true
-  }
+  },
+  lastLoginAt: {
+    type: Date
+  },
+  passwordResetToken: String,
+  passwordResetExpires: Date,
+  passwordChangedAt: Date
 }, {
   timestamps: true
 });
 
-userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
+
+userSchema.pre('save', async function() {
+  // Хешуємо пароль тільки якщо він змінився
+  if (!this.isModified('password')) return;
+  
   this.password = await bcrypt.hash(this.password, 12);
-  next();
+  
+  // Якщо пароль змінено (не при першому створенні)
+  if (!this.isNew) {
+    this.passwordChangedAt = Date.now() - 1000; // -1 сек для синхронізації
+  }
 });
 
+// Метод порівняння паролів
 userSchema.methods.comparePassword = async function(candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
+};
+
+// Перевірка чи змінено пароль після видачі токену
+userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
+    return JWTTimestamp < changedTimestamp;
+  }
+  return false;
 };
 
 module.exports = mongoose.model('User', userSchema);

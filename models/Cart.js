@@ -1,4 +1,4 @@
-﻿import mongoose from "mongoose";
+﻿const mongoose = require('mongoose'); // ← Змінено з import на require
 
 const cartSchema = new mongoose.Schema({
   user: {
@@ -42,7 +42,7 @@ const cartSchema = new mongoose.Schema({
   expiresAt: {
     type: Date,
     default: Date.now,
-    expires: 60 * 60 * 24 * 7 // TTL index - не потрібно додаткового індексу
+    expires: 60 * 60 * 24 * 7
   },
   calculatedTotal: Number,
   subtotal: Number,
@@ -63,10 +63,8 @@ cartSchema.virtual("isEmpty").get(function() {
   return this.items.length === 0;
 });
 
-// Індекси - видаляємо дубльовані
+// Індекси
 cartSchema.index({ user: 1 });
 cartSchema.index({ sessionId: 1 });
-// cartSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 }); // Цей індекс вже створюється через expires
 
-const Cart = mongoose.model("Cart", cartSchema);
-export default Cart;
+module.exports = mongoose.model("Cart", cartSchema); // ← Змінено export на module.exports

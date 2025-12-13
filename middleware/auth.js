@@ -1,5 +1,4 @@
-﻿import authService from "../services/authService.js";
-import { AppError } from "../utils/helpers.js";
+﻿const authService = require('../services/authService'); // ← Змінено
 
 const authenticate = async (req, res, next) => {
   try {
@@ -13,7 +12,7 @@ const authenticate = async (req, res, next) => {
       });
     }
 
-    const token = authHeader.substring(7); // Видаляємо 'Bearer '
+    const token = authHeader.substring(7);
     
     const user = await authService.verifyToken(token);
     req.user = user;
@@ -39,7 +38,6 @@ const optionalAuth = async (req, res, next) => {
     
     next();
   } catch (error) {
-    // Ігноруємо помилки для optional auth
     next();
   }
 };
@@ -66,4 +64,4 @@ const authorize = (...roles) => {
   };
 };
 
-export { authenticate, optionalAuth, authorize };
+module.exports = { authenticate, optionalAuth, authorize }; // ← Змінено export на module.exports
